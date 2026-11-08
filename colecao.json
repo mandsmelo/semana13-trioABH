@@ -1,3 +1,4 @@
+
 {
   "info": {
     "name": "Semana 13 – API",
@@ -28,7 +29,12 @@
               "    properties: { id: { type: \"number\" }, name: { type: \"string\" }, email: { type: \"string\" } }",
               "  }",
               "  pm.response.to.have.jsonSchema(schema)",
-              "})"
+              "})",
+              "pm.test(\"O usuário possui nome\", function () {",
+              "    const resposta = pm.response.json();",
+              "    pm.expect(resposta.name).to.be.a(\"string\");",
+              "    pm.expect(resposta.name).to.not.be.empty;",
+              "});"
             ]
           }
         }
