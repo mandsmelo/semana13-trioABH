@@ -1,0 +1,25 @@
+
+# Workflow da Semana 13 – Integração Contínua
+# Atenção: use espaços, nunca TAB.
+
+name: Testes de API
+
+on: [push, workflow_dispatch]
+
+jobs:
+  testes-api:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o código do repositório
+        uses: actions/checkout@v6
+
+      - name: Instalar o Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+
+      - name: Instalar o Newman
+        run: npm install -g newman
+
+      - name: Rodar a coleção de testes
+        run: newman run colecao.json
